@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
+
 export const metadata: Metadata = {
   title: 'GSphotography – Portfolio',
   description: 'Minimal, modern photography portfolio.',
