@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     description: 'Minimal, modern photography portfolio.',
     images: [{ url: '/og-image.png' }],
     type: 'website',
-  }
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
