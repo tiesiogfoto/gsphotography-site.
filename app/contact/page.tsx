@@ -1,106 +1,137 @@
-// app/contact/page.tsx
-export const metadata = {
-  title: "Contact – GSphotography",
-  description:
-    "Send en forespørsel – kontakt GSphotography for booking og priser.",
-};
+"use client";
+
+import { useState } from "react";
 
 export default function ContactPage() {
+  const [status, setStatus] = useState<"idle" | "sending" | "ok" | "error">(
+    "idle"
+  );
+
+  // 1) Gauk savo Formspree formos ID (pvz., f/abcdxyz) iš formspree.io
+  // 2) Pakeisk žemiau esantį URL į savo:
+  const FORMSPREE_URL = "https://formspree.io/f/your-form-id";
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("sending");
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch(FORMSPREE_URL, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: data,
+      });
+
+      if (res.ok) {
+        setStatus("ok");
+        form.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  }
+
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12">
-      <h1 className="mb-6 text-4xl font-bold text-gray-100">Contact</h1>
-      <p className="mb-8 text-gray-300">
-        Har du spørsmål eller ønsker å booke en fotografering? Fyll ut skjemaet
-        så svarer jeg så snart som mulig.
-      </p>
+    <div className="max-w-4xl mx-auto px-4 py-10 space-y-8">
+      <h1 className="text-4xl font-bold text-white">Contact</h1>
 
-      {/* FormSubmit – siunčia laišką į hello@gsphotography.no */}
-      <form
-        action="https://formsubmit.co/hello@gsphotography.no"
-        method="POST"
-        className="rounded-2xl bg-white/5 p-6 shadow-lg ring-1 ring-white/10 backdrop-blur"
-      >
-        {/* --- FormSubmit nustatymai --- */}
-        {/* po sėkmės – peradresuos į /contact/thanks */}
-        <input type="hidden" name="_next" value="/contact/thanks" />
-        {/* uždraudžiam captcha, jei nenori – ištrink šią eilutę */}
-        <input type="hidden" name="_captcha" value="false" />
-        {/* temos eilutė laiške */}
-        <input type="hidden" name="_subject" value="Ny melding fra GSphotography.no" />
-        {/* anti-spam honeypot (nematomam laukui nekeisk pavadinimo) */}
-        <input type="text" name="_honey" className="hidden" />
+      {/* Kontaktų kortelė */}
+      <div className="bg-white rounded-xl shadow p-6 space-y-3">
+        <h2 className="text-xl font-semibold text-gray-900">GSphotography</h2>
 
-        <div className="grid gap-5 sm:grid-cols-2">
-          <div>
-            <label className="mb-2 block text-sm font-medium text-gray-200">
-              Navn
-            </label>
-            <input
-              type="text"
-              name="name"
-              required
-              className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-gray-100 outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-emerald-400"
-              placeholder="Ditt navn"
-            />
-          </div>
-          <div>
-            <label className="mb-2 block text-sm font-medium text-gray-200">
-              E-post
-            </label>
-            <input
-              type="email"
-              name="email"
-              required
-              className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-gray-100 outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-emerald-400"
-              placeholder="din@email.no"
-            />
-          </div>
-        </div>
-
-        <div className="mt-5">
-          <label className="mb-2 block text-sm font-medium text-gray-200">
-            Melding
-          </label>
-          <textarea
-            name="message"
-            required
-            rows={6}
-            className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-gray-100 outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-emerald-400"
-            placeholder="Skriv meldingen her…"
-          />
-        </div>
-
-        <button
-          type="submit"
-          className="mt-6 inline-flex items-center rounded-lg bg-emerald-500 px-5 py-2.5 font-semibold text-white hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-400"
-        >
-          Send
-        </button>
-
-        {/* Alternatyvūs kontaktai */}
-        <div className="mt-6 text-sm text-gray-400">
-          Eller skriv til:{" "}
-          <a
-            href="mailto:hello@gsphotography.no"
-            className="font-medium text-gray-200 underline-offset-4 hover:underline"
-          >
-            hello@gsphotography.no
-          </a>{" "}
-          · ring:{" "}
+        <p className="text-gray-700">
           <a
             href="tel:+4746262381"
-            className="font-medium text-gray-200 underline-offset-4 hover:underline"
+            className="underline hover:no-underline font-medium"
+            aria-label="Call GSphotography"
           >
             46 26 23 81
           </a>
-        </div>
-      </form>
+        </p>
 
-      <p className="mt-4 text-xs text-gray-500">
-        Ved å sende skjemaet samtykker du i at informasjonen behandles for å
-        svare på henvendelsen.
-      </p>
+        <p className="text-gray-700">
+          <a
+            href="mailto:hello@gsphotography.no"
+            className="underline hover:no-underline font-medium"
+            aria-label="Email GSphotography"
+          >
+            hello@gsphotography.no
+          </a>
+        </p>
+      </div>
+
+      {/* Forma per Formspree */}
+      <div className="bg-white rounded-xl shadow p-6">
+        <h2 className="text-xl font-semibold text-gray-900 mb-4">
+          Send us a message
+        </h2>
+
+        <form onSubmit={onSubmit} className="space-y-4">
+          <div>
+            <label className="block text-sm text-gray-700 mb-1">Name</label>
+            <input
+              name="name"
+              type="text"
+              required
+              className="w-full border rounded px-4 py-2"
+              placeholder="Your name"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm text-gray-700 mb-1">Email</label>
+            <input
+              name="email"
+              type="email"
+              required
+              className="w-full border rounded px-4 py-2"
+              placeholder="your@email.com"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm text-gray-700 mb-1">Message</label>
+            <textarea
+              name="message"
+              required
+              rows={5}
+              className="w-full border rounded px-4 py-2"
+              placeholder="Write your message…"
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={status === "sending"}
+            className="bg-black text-white px-6 py-2 rounded disabled:opacity-60"
+          >
+            {status === "sending" ? "Sending…" : "Send"}
+          </button>
+
+          {status === "ok" && (
+            <p className="text-green-700 text-sm mt-2">
+              Thank you! Your message has been sent.
+            </p>
+          )}
+          {status === "error" && (
+            <p className="text-red-700 text-sm mt-2">
+              Something went wrong. Please try again, or email
+              {" "}
+              <a
+                href="mailto:hello@gsphotography.no"
+                className="underline"
+              >
+                hello@gsphotography.no
+              </a>.
+            </p>
+          )}
+        </form>
+      </div>
     </div>
   );
 }
-
