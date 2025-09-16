@@ -2,8 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-
-
+import MobileQuickBar from '../components/MobileQuickBar';
 
 export const metadata: Metadata = {
   title: 'GSphotography – Portfolio',
@@ -17,13 +16,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body className="font-body antialiased">
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <MobileQuickBar />
       </body>
     </html>
   );
