@@ -1,47 +1,106 @@
-export default function Contact() {
-  return (
-    <div className="p-6 max-w-4xl mx-auto space-y-8">
-      <h1 className="text-4xl font-bold text-gray-800">Contact</h1>
+// app/contact/page.tsx
+export const metadata = {
+  title: "Contact – GSphotography",
+  description:
+    "Send en forespørsel – kontakt GSphotography for booking og priser.",
+};
 
-      <p className="text-gray-700">
-        Have a project in mind or want to book a photoshoot? 
-        Feel free to reach out by phone or email – I’ll get back to you as soon as possible.
+export default function ContactPage() {
+  return (
+    <div className="mx-auto max-w-3xl px-4 py-12">
+      <h1 className="mb-6 text-4xl font-bold text-gray-100">Contact</h1>
+      <p className="mb-8 text-gray-300">
+        Har du spørsmål eller ønsker å booke en fotografering? Fyll ut skjemaet
+        så svarer jeg så snart som mulig.
       </p>
 
-      <div className="bg-white p-6 rounded-xl shadow space-y-2">
-        <p className="text-gray-700"><strong>GSphotography</strong></p>
-        <p className="text-gray-700">
-          📱 <a href="tel:+4746262381" className="text-blue-600 hover:underline">
-            46 26 23 81
-          </a>
-        </p>
-        <p className="text-gray-700">
-          ✉️ <a href="mailto:hello@gsphotography.no" className="text-blue-600 hover:underline">
-            hello@gsphotography.no
-          </a>
-        </p>
-      </div>
+      {/* FormSubmit – siunčia laišką į hello@gsphotography.no */}
+      <form
+        action="https://formsubmit.co/hello@gsphotography.no"
+        method="POST"
+        className="rounded-2xl bg-white/5 p-6 shadow-lg ring-1 ring-white/10 backdrop-blur"
+      >
+        {/* --- FormSubmit nustatymai --- */}
+        {/* po sėkmės – peradresuos į /contact/thanks */}
+        <input type="hidden" name="_next" value="/contact/thanks" />
+        {/* uždraudžiam captcha, jei nenori – ištrink šią eilutę */}
+        <input type="hidden" name="_captcha" value="false" />
+        {/* temos eilutė laiške */}
+        <input type="hidden" name="_subject" value="Ny melding fra GSphotography.no" />
+        {/* anti-spam honeypot (nematomam laukui nekeisk pavadinimo) */}
+        <input type="text" name="_honey" className="hidden" />
 
-      <form className="bg-white p-6 rounded-xl shadow space-y-4">
-        <div>
-          <label className="block text-gray-700">Name</label>
-          <input type="text" className="w-full border rounded px-4 py-2" placeholder="Your name" />
+        <div className="grid gap-5 sm:grid-cols-2">
+          <div>
+            <label className="mb-2 block text-sm font-medium text-gray-200">
+              Navn
+            </label>
+            <input
+              type="text"
+              name="name"
+              required
+              className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-gray-100 outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-emerald-400"
+              placeholder="Ditt navn"
+            />
+          </div>
+          <div>
+            <label className="mb-2 block text-sm font-medium text-gray-200">
+              E-post
+            </label>
+            <input
+              type="email"
+              name="email"
+              required
+              className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-gray-100 outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-emerald-400"
+              placeholder="din@email.no"
+            />
+          </div>
         </div>
-        <div>
-          <label className="block text-gray-700">Email</label>
-          <input type="email" className="w-full border rounded px-4 py-2" placeholder="your@email.com" />
+
+        <div className="mt-5">
+          <label className="mb-2 block text-sm font-medium text-gray-200">
+            Melding
+          </label>
+          <textarea
+            name="message"
+            required
+            rows={6}
+            className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-gray-100 outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-emerald-400"
+            placeholder="Skriv meldingen her…"
+          />
         </div>
-        <div>
-          <label className="block text-gray-700">Message</label>
-          <textarea className="w-full border rounded px-4 py-2" rows={4} placeholder="Write your message..." />
-        </div>
+
         <button
           type="submit"
-          className="bg-black text-white px-6 py-2 rounded hover:bg-gray-800"
+          className="mt-6 inline-flex items-center rounded-lg bg-emerald-500 px-5 py-2.5 font-semibold text-white hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-400"
         >
           Send
         </button>
+
+        {/* Alternatyvūs kontaktai */}
+        <div className="mt-6 text-sm text-gray-400">
+          Eller skriv til:{" "}
+          <a
+            href="mailto:hello@gsphotography.no"
+            className="font-medium text-gray-200 underline-offset-4 hover:underline"
+          >
+            hello@gsphotography.no
+          </a>{" "}
+          · ring:{" "}
+          <a
+            href="tel:+4746262381"
+            className="font-medium text-gray-200 underline-offset-4 hover:underline"
+          >
+            46 26 23 81
+          </a>
+        </div>
       </form>
+
+      <p className="mt-4 text-xs text-gray-500">
+        Ved å sende skjemaet samtykker du i at informasjonen behandles for å
+        svare på henvendelsen.
+      </p>
     </div>
   );
 }
+
