@@ -5,6 +5,18 @@
     "about": "Om",
     "contact": "Kontakt"
   },
+  "home": {
+    "welcome": "Velkommen til GSphotography",
+    "intro": "Rene, tidløse bilder for merkevarer og mennesker."
+  },
+  "about": {
+    "title": "Om GSphotography",
+    "body": "Jeg fanger produkter, arkitektur og portretter med et rent, minimalistisk uttrykk."
+  },
+  "portfolioPage": {
+    "title": "Portefølje",
+    "intro": "Et utvalg av nylige prosjekter."
+  },
   "contact": {
     "title": "Kontakt",
     "ready": "Klar til å diskutere et opptak?",
@@ -13,17 +25,3 @@
   "footer": {
     "rights": "Alle rettigheter forbeholdt"
   }
-}
-
-"home": {
-  "welcome": "Velkommen til GSphotography",
-  "intro": "Rene, tidløse bilder for merkevarer og mennesker."
-},
-"about": {
-  "title": "Om GSphotography",
-  "body": "Jeg fanger produkter, arkitektur og portretter med et rent, minimalistisk uttrykk."
-},
-"portfolioPage": {
-  "title": "Portefølje",
-  "intro": "Et utvalg av nylige prosjekter."
-}
