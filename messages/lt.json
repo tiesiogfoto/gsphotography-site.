@@ -14,3 +14,15 @@
     "rights": "Visos teisės saugomos"
   }
 }
+"home": {
+  "welcome": "Sveiki atvykę į GSphotography",
+  "intro": "Švarios, laikui nepavaldžios nuotraukos prekės ženklams ir žmonėms."
+},
+"about": {
+  "title": "Apie GSphotography",
+  "body": "Fotografuoju produktus, architektūrą ir portretus švariu, minimalistiniu stiliumi."
+},
+"portfolioPage": {
+  "title": "Galerija",
+  "intro": "Keletas naujausių darbų."
+}
