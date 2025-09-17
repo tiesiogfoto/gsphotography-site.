@@ -5,7 +5,6 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "GSphotography",
   description: "Clean, timeless photography for brands and people.",
-  icons: { icon: "/favicon.ico" },
   openGraph: {
     title: "GSphotography",
     description: "Clean, timeless photography for brands and people.",
@@ -21,4 +20,3 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
-
