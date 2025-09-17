@@ -4,15 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
 
-/**
- * Paprastas kalbų perjungiklis su vėliavėlėmis.
- * Veikia su kelių prefiksu URL'e: /no, /en, /lt
- * Jei dabartinis kelias be prefikso, laikoma, kad tai EN ir sugeneruojami /no, /en, /lt.
- *
- * PASTABA: Jeigu dar nenaudoji /no /en /lt maršrutų, nuorodos vis tiek veiks
- * ir ves į atitinkamų kalbų pradžios puslapį (pvz., /no).
- */
-
 type Props = {
   size?: "sm" | "md";
   position?: "header" | "footer";
@@ -26,20 +17,22 @@ const LOCALES = [
 
 export default function LanguageSwitcher({ size = "md", position = "header" }: Props) {
   const pathname = usePathname() || "/";
-  // Bandome ištraukti lokalę iš pirmo URL segmente
   const seg = pathname.split("/").filter(Boolean);
-  const current =
-    seg.length > 0 && ["no", "en", "lt"].includes(seg[0]) ? (seg[0] as "no" | "en" | "lt") : "en";
 
-  // Funkcija pakeisti tik 1-ą segmentą (locale), likusią kelio dalį palikti
+  // 🔧 default -> 'no' (sutampa su middleware defaultLocale)
+  const current =
+    seg.length > 0 && ["no", "en", "lt"].includes(seg[0])
+      ? (seg[0] as "no" | "en" | "lt")
+      : "no";
+
   const makeHref = (target: string) => {
     const parts = pathname.split("/").filter(Boolean);
-    if (parts.length === 0) return `/${target}`; // esame / -> /{target}
+    if (parts.length === 0) return `/${target}`;
     if (["no", "en", "lt"].includes(parts[0])) {
       parts[0] = target;
       return "/" + parts.join("/");
     }
-    return `/${target}`; // jei kelias be locale -> nukreipti į /{target}
+    return `/${target}`;
   };
 
   const baseBtn =
@@ -67,7 +60,7 @@ export default function LanguageSwitcher({ size = "md", position = "header" }: P
                 ? "bg-white/90 text-gray-900"
                 : "bg-white/20 text-white hover:bg-white/30 backdrop-blur"
             )}
-            prefetch={true}
+            aria-current={active ? "page" : undefined}
           >
             <span className="text-xl leading-none" aria-hidden>
               {loc.flag}
