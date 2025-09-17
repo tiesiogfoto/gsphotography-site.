@@ -1,8 +1,9 @@
 // app/[locale]/layout.tsx
-import "../globals.css";
+import "../../globals.css";
 import type { Metadata } from "next";
-import {NextIntlClientProvider} from "next-intl";
-import {notFound} from "next/navigation";
+import { NextIntlClientProvider } from "next-intl";
+import { notFound } from "next/navigation";
+
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
