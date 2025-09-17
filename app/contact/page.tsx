@@ -10,8 +10,29 @@ export default function ContactPage() {
       {/* Kontaktinė kortelė */}
       <div className="mb-10 rounded-lg bg-gray-900 p-6 shadow">
         <h2 className="font-semibold text-white mb-2">GSphotography</h2>
-        <p className="text-gray-300">📞 46 26 23 81</p>
-        <p className="text-gray-300">✉️ hello@gsphotography.no</p>
+        
+        {/* Telefono numeris kaip nuoroda */}
+        <p className="text-gray-300">
+          📞{" "}
+          <a
+            href="tel:+4746262381"
+            className="hover:text-white hover:underline underline-offset-4"
+            aria-label="Call 46 26 23 81"
+          >
+            46 26 23 81
+          </a>
+        </p>
+
+        {/* El. paštas kaip nuoroda */}
+        <p className="text-gray-300">
+          ✉️{" "}
+          <a
+            href="mailto:hello@gsphotography.no"
+            className="hover:text-white hover:underline underline-offset-4"
+          >
+            hello@gsphotography.no
+          </a>
+        </p>
       </div>
 
       {/* Forma su Formspree */}
