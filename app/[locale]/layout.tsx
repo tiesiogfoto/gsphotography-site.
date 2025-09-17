@@ -33,33 +33,7 @@ export default async function RootLayout(props: {
 
   unstable_setRequestLocale(locale);
 
-  let messages: Record<string, string>;
-  try {
-    messages = (await import(`../../messages/${locale}.json`)).default;
-  } catch {
-    notFound();
-  }
-
-  return (
-    <html lang={locale}>
-      <body className="font-body antialiased">
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-        </NextIntlClientProvider>
-      </body>
-    </html>
-  );
-}
-
-}: {
-  children: React.ReactNode;
-  params: { locale: string };
-}) {
-  unstable_setRequestLocale(locale);
-
-  let messages;
+  let messages: Record<string, unknown>;
   try {
     messages = (await import(`../../messages/${locale}.json`)).default;
   } catch {
@@ -77,4 +51,8 @@ export default async function RootLayout(props: {
           <Navbar />
           <main>{children}</main>
           <Footer />
-        </Next
+        </NextIntlClientProvider>
+      </body>
+    </html>
+  );
+}
