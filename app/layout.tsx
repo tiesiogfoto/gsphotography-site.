@@ -2,7 +2,9 @@
 import "./globals.css";
 import type { Metadata } from "next";
 
-// Importai turi būti santykiniai, iš app į components
+import {NextIntlClientProvider} from "next-intl";
+import {notFound} from "next/navigation";
+
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -18,18 +20,30 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params: { locale },
 }: {
   children: React.ReactNode;
+  params: { locale: string };
 }) {
+  let messages;
+  try {
+    messages = (await import(`../messages/${locale}.json`)).default;
+  } catch (error) {
+    notFound();
+  }
+
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body className="font-body antialiased">
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </NextIntlClientProvider>
       </body>
     </html>
   );
 }
+
