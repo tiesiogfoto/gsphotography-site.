@@ -9,5 +9,9 @@
     "title": "Kontakt",
     "ready": "Klar til å diskutere et opptak?",
     "send": "Send"
+  },
+  "footer": {
+    "rights": "Alle rettigheter forbeholdt"
   }
 }
+
