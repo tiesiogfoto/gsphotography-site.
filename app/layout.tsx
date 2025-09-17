@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: "GSphotography",
     description: "Clean, timeless photography for brands and people.",
     type: "website",
-    images: ["/og-image.png"], // paprasčiau: tik string, be objektų
+    images: ["/og-image.png"],
   },
 };
 
