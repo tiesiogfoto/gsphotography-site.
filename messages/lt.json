@@ -1,0 +1,13 @@
+{
+  "nav": {
+    "home": "Pradžia",
+    "portfolio": "Galerija",
+    "about": "Apie",
+    "contact": "Kontaktai"
+  },
+  "contact": {
+    "title": "Kontaktai",
+    "ready": "Pasiruošę aptarti fotosesiją?",
+    "send": "Siųsti"
+  }
+}
