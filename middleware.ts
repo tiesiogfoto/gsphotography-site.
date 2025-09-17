@@ -1,9 +1,9 @@
 import createMiddleware from "next-intl/middleware";
+import { NextRequest } from "next/server";
 
-export default createMiddleware({
-  locales: ["no", "en", "lt"],
-  defaultLocale: "no"
-});
+import nextIntlConfig from "./next-intl.config";
+
+export default createMiddleware(nextIntlConfig);
 
 export const config = {
   matcher: ["/", "/(no|en|lt)/:path*"]
