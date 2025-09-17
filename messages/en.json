@@ -2,7 +2,19 @@
   "nav": {
     "home": "Home",
     "portfolio": "Portfolio",
-    "about": "About",
+    "about": "About","home": {
+  "welcome": "Welcome to GSphotography",
+  "intro": "Clean, timeless photography for brands and people."
+},
+"about": {
+  "title": "About GSphotography",
+  "body": "I capture products, architecture and portraits with a clean, minimalist aesthetic."
+},
+"portfolioPage": {
+  "title": "Portfolio",
+  "intro": "A selection of recent projects."
+}
+
     "contact": "Contact"
   },
   "contact": {
