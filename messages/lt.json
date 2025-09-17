@@ -9,5 +9,8 @@
     "title": "Kontaktai",
     "ready": "Pasiruošę aptarti fotosesiją?",
     "send": "Siųsti"
+  },
+  "footer": {
+    "rights": "Visos teisės saugomos"
   }
 }
