@@ -4,22 +4,17 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
 
-type Props = {
-  size?: "sm" | "md";
-  position?: "header" | "footer";
-};
+type Props = { size?: "sm" | "md"; position?: "header" | "footer" };
 
 const LOCALES = [
   { code: "no", label: "NO", flag: "🇳🇴" },
   { code: "en", label: "EN", flag: "🇬🇧" },
-  { code: "lt", label: "LT", flag: "🇱🇹" },
+  { code: "lt", label: "LT", flag: "🇱🇹" }
 ];
 
 export default function LanguageSwitcher({ size = "md", position = "header" }: Props) {
   const pathname = usePathname() || "/";
   const seg = pathname.split("/").filter(Boolean);
-
-  // 🔧 default -> 'no' (sutampa su middleware defaultLocale)
   const current =
     seg.length > 0 && ["no", "en", "lt"].includes(seg[0])
       ? (seg[0] as "no" | "en" | "lt")
