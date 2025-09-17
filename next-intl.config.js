@@ -1,4 +1,5 @@
-module.exports = {
-  locales: ["en", "no", "lt"], // kalbos, kurias naudoji
-  defaultLocale: "no"          // pagrindinė kalba
-};
+// next-intl.config.js
+export const locales = ["en", "no", "lt"];
+export const defaultLocale = "no";
+
+export default {locales, defaultLocale};
