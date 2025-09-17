@@ -2,10 +2,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
 
-// Importai turi būti santykiniai, iš app į components
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-
 export const metadata: Metadata = {
   title: "GSphotography",
   description: "Clean, timeless photography for brands and people.",
@@ -14,22 +10,15 @@ export const metadata: Metadata = {
     title: "GSphotography",
     description: "Clean, timeless photography for brands and people.",
     type: "website",
-    images: [{ url: "/og-image.png" }],
-  },
+    images: [{ url: "/og-image.png" }]
+  }
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="font-body antialiased">
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-      </body>
+      <body className="font-body antialiased">{children}</body>
     </html>
   );
 }
+

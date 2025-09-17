@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "home": "Pradžia",
+    "portfolio": "Galerija",
+    "about": "Apie",
+    "contact": "Kontaktai"
+  },
+  "home": {
+    "welcome": "Sveiki atvykę į GSphotography",
+    "intro": "Švarios, laikui nepavaldžios nuotraukos prekės ženklams ir žmonėms."
+  },
+  "about": {
+    "title": "Apie GSphotography",
+    "body": "Fotografuoju produktus, architektūrą ir portretus švariu, minimalistiniu stiliumi."
+  },
+  "portfolioPage": {
+    "title": "Galerija",
+    "intro": "Keletas naujausių darbų."
+  },
+  "contact": {
+    "title": "Kontaktai",
+    "ready": "Pasiruošę aptarti fotosesiją?",
+    "send": "Siųsti"
+  },
+  "footer": {
+    "rights": "Visos teisės saugomos"
+  }
+}
