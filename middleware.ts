@@ -1,8 +1,9 @@
-import createMiddleware from "next-intl/middleware";
-import nextIntlConfig from "./next-intl.config";
+// middleware.ts
+import createMiddleware from 'next-intl/middleware';
+import intlConfig from './next-intl.config';
 
-export default createMiddleware(nextIntlConfig);
+export default createMiddleware(intlConfig);
 
 export const config = {
-  matcher: ["/", "/(no|en|lt)/:path*"]
+  matcher: ['/', '/(en|no|lt)/:path*']
 };
