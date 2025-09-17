@@ -6,3 +6,4 @@ export default createMiddleware(intlConfig);
 export const config = {
   matcher: ['/', '/(en|no|lt)/:path*']
 };
+
