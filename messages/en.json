@@ -9,5 +9,8 @@
     "title": "Contact",
     "ready": "Ready to discuss a shoot?",
     "send": "Send"
+  },
+  "footer": {
+    "rights": "All rights reserved"
   }
 }
