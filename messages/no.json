@@ -1,0 +1,13 @@
+{
+  "nav": {
+    "home": "Hjem",
+    "portfolio": "Portefølje",
+    "about": "Om",
+    "contact": "Kontakt"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "ready": "Klar til å diskutere et opptak?",
+    "send": "Send"
+  }
+}
